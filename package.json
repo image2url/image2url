@@ -1,5 +1,5 @@
 {
-  "name": "imagetourl",
+  "name": "imgtourl",
   "version": "0.1.0",
   "description": "Lightweight client and CLI to upload images to Cloudflare R2 and return a permanent URL.",
   "license": "MIT",
@@ -18,7 +18,8 @@
     "LICENSE"
   ],
   "bin": {
-    "image2url": "./dist/cli.js"
+    "imgtourl": "./dist/cli.js",
+    "imagetourl": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

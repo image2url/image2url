@@ -1,11 +1,11 @@
-# img2url
+# imgtourl
 
-Minimal client and CLI for uploading images to Cloudflare R2 (S3 compatible) and getting a permanent URL. Mirrors the upload rules used by image2url.com (image-only, 2MB default limit, CDN-friendly cache headers).
+Minimal client and CLI for uploading images to Cloudflare R2 (S3 compatible) and getting a permanent URL. Mirrors the upload rules used by imgtourl.com (image-only, 2MB default limit, CDN-friendly cache headers).
 
 ## Install
 
 ```bash
-npm install img2url
+npm install imgtourl
 ```
 
 Requires Node.js 18+.
@@ -19,12 +19,13 @@ You need Cloudflare R2 credentials and a public bucket URL. Set them as env vars
 - `R2_SECRET_ACCESS_KEY`
 - `R2_BUCKET_NAME`
 - `R2_PUBLIC_URL` (e.g. `https://your-bucket.r2.dev`)
-- Optional: `IMAGE2URL_PREFIX` (defaults to `images/`), `IMAGE2URL_MAX_SIZE` (bytes)
+- Optional: `IMGTOURL_PREFIX` (defaults to `images/`), `IMGTOURL_MAX_SIZE` (bytes)
+- Backward-compatible aliases: `IMAGETOURL_PREFIX`, `IMAGE2URL_PREFIX`, `IMAGETOURL_MAX_SIZE`, `IMAGE2URL_MAX_SIZE`
 
 ## Quick start (code)
 
 ```ts
-import { Image2UrlClient, createClientFromEnv } from 'image2url';
+import { Image2UrlClient, createClientFromEnv } from 'imgtourl';
 
 const client = createClientFromEnv(); // uses the env vars above
 
@@ -44,7 +45,7 @@ await client.uploadBase64('data:image/png;base64,...');
 ## CLI
 
 ```bash
-image2url <image-path> \
+imgtourl <image-path> \
   --account <account-id> \
   --access-key <key> \
   --secret-key <secret> \
@@ -64,6 +65,6 @@ CLI output is JSON with the uploaded URL, key, size, and content type.
 ## Defaults and validation
 
 - Only `image/*` content types are allowed.
-- Default size limit: 2MB (`IMAGE2URL_MAX_SIZE` to change).
+- Default size limit: 2MB (`IMGTOURL_MAX_SIZE`, `IMAGETOURL_MAX_SIZE`, or `IMAGE2URL_MAX_SIZE` to change).
 - Object keys are `images/<timestamp>-<uuid>.<ext>` unless you pass `--key`.
 - Cache header: `public, max-age=31536000` (1 year).
