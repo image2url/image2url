@@ -1,11 +1,11 @@
-# image2url
+# img2url
 
 Minimal client and CLI for uploading images to Cloudflare R2 (S3 compatible) and getting a permanent URL. Mirrors the upload rules used by image2url.com (image-only, 2MB default limit, CDN-friendly cache headers).
 
 ## Install
 
 ```bash
-npm install image2url
+npm install img2url
 ```
 
 Requires Node.js 18+.
